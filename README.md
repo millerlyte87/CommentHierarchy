@@ -1,6 +1,7 @@
-# CommentHierarchy
+# CommentHierarchy by Me First Games
 This tool allows you to add comments to your hierarchy in your scenes and prefabs.
 * Anything starting with the prefix "//" will automatically highlight as a green comment.
+* Anything starting with the prefix "todo" will automatically highlight as purple. 
 * Comments are automatically marked as EditorOnly
 * Comment game objects are automatically stripped when you build your game.
 * Empowers you to document your prefabs and scenes with NO performance cost.
@@ -10,4 +11,11 @@ This tool allows you to add comments to your hierarchy in your scenes and prefab
 Simply drop this folder into your unity project.
 Or copy the files under Scripts/ into your Unity project.
 
-Any gameobject inside the hierarchy that starts with the prefix "//" will
+## This is a FREE tool. Please support me by
+* Purchasing my Game: https://store.steampowered.com/app/1052030/Star_Impact
+* Follow my Instagram: https://www.instagram.com/mefirstgames
+* Follow my Twitter: https://twitter.com/mefirstgames
+
+## Register your email for Updates and more FREE tools
+https://www.mefirstgames.com/hierarchy-comments.htm
+
