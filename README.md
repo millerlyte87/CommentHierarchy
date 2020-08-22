@@ -21,5 +21,5 @@ Or copy the files under Scripts/ into your Unity project.
 * Follow my Twitter: https://twitter.com/mefirstgames
 
 ## Register your email for Updates and more FREE tools
-https://www.mefirstgames.com/hierarchy-comments.htm
+https://www.mefirstgames.com/hierarchy-comments.htmL
 
