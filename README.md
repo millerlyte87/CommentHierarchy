@@ -1,7 +1,7 @@
 # CommentHierarchy by Me First Games
 My Mission is to make Unity Prefabs and Scene easier to document and maintain for small and large teams.
 
-![](https://media.giphy.com/media/THZJkE86lxXeScSpMt/giphy.gif)
+<img src="https://media.giphy.com/media/THZJkE86lxXeScSpMt/giphy.gif" width="256" height="256" />
 
 This tool allows you to add comments to your hierarchy in your scenes and prefabs.
 * Anything starting with the prefix "//" will automatically highlight as a green comment.
