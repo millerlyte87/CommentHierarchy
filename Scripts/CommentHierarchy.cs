@@ -1,4 +1,3 @@
-using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,6 +21,11 @@ namespace MeFirstGames.Tools
         private static readonly Color EditorOnlyTodoFontColorInactive = new Color(0.74f, 0.38f, 0.75f);
         private static readonly Color EditorOnlyTodoPrefabFontColorActive = new Color(0.68f, 0.37f, 0.69f);
         private static readonly Color EditorOnlyTodoPrefabFontColorInactive = new Color(0.56f, 0.29f, 0.57f);
+        private static readonly Color EditorOnlyWarningFontColorActive = new Color(0.82f, 0.88f, 0.02f);
+        private static readonly Color EditorOnlyWarningFontColorInactive = new Color(0.68f, 0.73f, 0.02f);
+        private static readonly Color EditorOnlyWarningPrefabFontColorActive = new Color(0.76f, 0.88f, 0.01f);
+        private static readonly Color EditorOnlyWarningPrefabFontColorInactive = new Color(0.64f, 0.74f, 0.01f);
+
         
         private const string EDITOR_ONLY = "EditorOnly";
 
@@ -58,6 +62,15 @@ namespace MeFirstGames.Tools
                             EditorOnlyCommentFontColorInactive,
                             EditorOnlyCommentPrefabFontColorActive,
                             EditorOnlyCommentPrefabFontColorInactive);
+                    }
+                    else if (HasPrefix(name, "!"))
+                    {
+                        DrawLabelField(gameObject,
+                            selectionRect,
+                            EditorOnlyWarningFontColorActive,
+                            EditorOnlyWarningFontColorInactive,
+                            EditorOnlyWarningPrefabFontColorActive,
+                            EditorOnlyWarningPrefabFontColorInactive);
                     }
                 }
             }
