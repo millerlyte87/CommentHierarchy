@@ -1,4 +1,3 @@
-using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,7 +21,15 @@ namespace MeFirstGames.Tools
         private static readonly Color EditorOnlyTodoFontColorInactive = new Color(0.74f, 0.38f, 0.75f);
         private static readonly Color EditorOnlyTodoPrefabFontColorActive = new Color(0.68f, 0.37f, 0.69f);
         private static readonly Color EditorOnlyTodoPrefabFontColorInactive = new Color(0.56f, 0.29f, 0.57f);
-        
+        private static readonly Color EditorOnlyWarningFontColorActive = new Color(0.88f, 0.61f, 0.1f);
+        private static readonly Color EditorOnlyWarningFontColorInactive = new Color(0.73f, 0.49f, 0.1f);
+        private static readonly Color EditorOnlyWarningPrefabFontColorActive = new Color(0.88f, 0.68f, 0.13f);
+        private static readonly Color EditorOnlyWarningPrefabFontColorInactive = new Color(0.73f, 0.55f, 0.13f);
+        private static readonly Color EditorOnlyReadmeFontColorActive = new Color(0.54f, 0.88f, 0.53f);
+        private static readonly Color EditorOnlyReadmeFontColorInactive = new Color(0.4f, 0.73f, 0.39f);
+        private static readonly Color EditorOnlyReadmePrefabFontColorActive = new Color(0.54f, 0.88f, 0.53f);
+        private static readonly Color EditorOnlyReadmePrefabFontColorInactive = new Color(0.43f, 0.73f, 0.42f);
+
         private const string EDITOR_ONLY = "EditorOnly";
 
         static CommentHierarchy()
@@ -50,6 +57,18 @@ namespace MeFirstGames.Tools
                             EditorOnlyTodoPrefabFontColorActive,
                             EditorOnlyTodoPrefabFontColorInactive);
                     }
+                    else if (HasPrefix(name, "readme")
+                             || HasPrefix(name, "//readme"))
+                    {
+                        DrawLabelField(gameObject,
+                            selectionRect,
+                            EditorOnlyReadmeFontColorActive,
+                            EditorOnlyReadmeFontColorInactive,
+                            EditorOnlyReadmePrefabFontColorActive,
+                            EditorOnlyReadmePrefabFontColorInactive);
+
+                        InitReadme(gameObject);
+                    }
                     else if (HasPrefix(name, "//"))
                     {
                         DrawLabelField(gameObject,
@@ -58,6 +77,15 @@ namespace MeFirstGames.Tools
                             EditorOnlyCommentFontColorInactive,
                             EditorOnlyCommentPrefabFontColorActive,
                             EditorOnlyCommentPrefabFontColorInactive);
+                    }
+                    else if (HasPrefix(name, "!"))
+                    {
+                        DrawLabelField(gameObject,
+                            selectionRect,
+                            EditorOnlyWarningFontColorActive,
+                            EditorOnlyWarningFontColorInactive,
+                            EditorOnlyWarningPrefabFontColorActive,
+                            EditorOnlyWarningPrefabFontColorInactive);
                     }
                 }
             }
@@ -79,7 +107,8 @@ namespace MeFirstGames.Tools
             Color activeColor,
             Color inactiveColor,
             Color activePrefabColor,
-            Color inactivePrefabColor)
+            Color inactivePrefabColor,
+            FontStyle fontStyle = FontStyle.Normal)
         {
             // Try to set the editor 
             SetToEditorOnly(gameObject);
@@ -104,7 +133,7 @@ namespace MeFirstGames.Tools
                 EditorGUI.LabelField(offsetRect, gameObject.name, new GUIStyle()
                     {
                         normal = new GUIStyleState() {textColor = textColor},
-                        fontStyle = FontStyle.Normal,
+                        fontStyle = fontStyle
                     }
                 );
             }
@@ -154,6 +183,25 @@ namespace MeFirstGames.Tools
             }
 
             return i == prefix.Length;
+        }
+
+        /// <summary>
+        /// Adds a readme if one is not already added
+        /// </summary>
+        /// <param name="gameObject"></param>
+        private static void InitReadme(GameObject gameObject)
+        {
+            if (gameObject == null)
+                return;
+
+            var readme = gameObject.GetComponent<ReadMe>();
+            if (readme != null)
+                return;
+
+            gameObject.AddComponent<ReadMe>();
+            gameObject.name = gameObject.name.ToUpper();
+          
+            EditorUtility.SetDirty(gameObject);
         }
         
         #endregion
