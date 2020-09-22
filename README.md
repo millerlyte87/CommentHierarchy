@@ -1,3 +1,5 @@
+MIT LICENSE
+
 # CommentHierarchy by Me First Games
 My Mission is to make Unity Prefabs and Scene easier to document and maintain for small and large teams.
 
